@@ -2,13 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _forwardSpeed; // SerializeField inspectordan degistirmemizi saðlar.
     //public float Speed => _speedMultiplier; => sadece read yapýlýr. deðer deðiþtirilemez. deðer degistirmek için get set.
 
     [SerializeField] private float _horizontalSpeed;
-    private void Start()
+
+    [SerializeField] private Rigidbody _rigidbody;
+
+    private Vector3 _velocity = new Vector3();
+    private void Awake() // Olustugu an, constructor
+    {
+        
+    }
+    private void Start() // Bir frame baslangýcýnda
     {
         
     }
@@ -21,11 +30,14 @@ public class PlayerMovement : MonoBehaviour
         //Input.GetKey(KeyCode.A);
         //Input.GetKeyDown(KeyCode.A);
         //Input.GetKeyUp(KeyCode.A);
-        
-        Vector3 velocity = Vector3.forward * _forwardSpeed;
-        velocity.x = Input.GetAxis("Horizontal") * _horizontalSpeed; // A = -1, D = 1
-        transform.position += velocity * Time.deltaTime;
 
+        _velocity.z = _forwardSpeed;
+        _velocity.y = _rigidbody.velocity.y; // To prevent going object in the air
+        _velocity.x = Input.GetAxis("Horizontal") * _horizontalSpeed;     
+    }
+    private void FixedUpdate()
+    {
+        _rigidbody.velocity = _velocity;
     }
 }
 
