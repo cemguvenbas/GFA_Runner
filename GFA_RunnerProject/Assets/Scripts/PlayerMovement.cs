@@ -33,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
         //Input.GetKey(KeyCode.A);
         //Input.GetKeyDown(KeyCode.A);
         //Input.GetKeyUp(KeyCode.A);
+        if (GameInstance.Instance.isGameStarted)
+        {
+            _velocity = Vector3.zero;
+            return;
+        }
 
         _velocity.z = _forwardSpeed;
         _velocity.y = _rigidbody.velocity.y; // To prevent going object in the air
