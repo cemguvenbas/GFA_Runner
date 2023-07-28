@@ -8,12 +8,20 @@ public class Obstacle : MonoBehaviour
     {
         if (collision.rigidbody.CompareTag("Player"))
         {
-            Destroy(collision.gameObject);
-            Debug.Log(collision.rigidbody.name);
-            GameInstance.Instance.Lose();
+            //Destroy(collision.gameObject);
+            var hitNormal =  collision.GetContact(0).normal;
+            var hitDot = Vector3.Dot(hitNormal, Vector3.forward);
+
+            if (hitDot > 0.99f)
+            {
+                GameInstance.Instance.Lose();
+            }
+            //Debug.Log(collision.rigidbody.name);
+            
         }
         else
         {
+
             collision.rigidbody.AddForce(Vector3.up * 30, ForceMode.Impulse);
             //var normal =  collision.GetContact(0).normal; 
         }

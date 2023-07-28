@@ -621,6 +621,8 @@ MonoBehaviour:
   _forwardSpeed: 12
   _horizontalSpeed: 6
   _rigidbody: {fileID: 421124401}
+  _jumpPower: 30
+  _maxHorizontalDistance: 5
 --- !u!54 &421124401
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -885,7 +887,7 @@ Transform:
   m_GameObject: {fileID: 1505198983}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 43.8}
   m_LocalScale: {x: 1, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1007,7 +1009,7 @@ PrefabInstance:
     - target: {fileID: 4494601911787253655, guid: 0a79517c2830abf41ba140aa30a5c04f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.29
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4494601911787253655, guid: 0a79517c2830abf41ba140aa30a5c04f,
         type: 3}
