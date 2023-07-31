@@ -11,7 +11,7 @@ public class Obstacle : MonoBehaviour
         {
             var hitNormal = collision.GetContact(0).normal;
             
-            var hitDot = Vector3.Dot(hitNormal, Vector3.forward);
+            var hitDot = Vector3.Dot(hitNormal, Vector3.forward); // Bu iki vektor tamamen paralelse 1. / zit yone bakiyorlarsa -1. / dik ise 0
             
             if (hitDot > 0.99f)
             {
@@ -21,6 +21,7 @@ public class Obstacle : MonoBehaviour
         }
         else
         {
+            // Çarptigi yone dogru ivme verebiliriz.
             var normal = collision.GetContact(0).normal;
             collision.rigidbody.AddForce(normal * 30, ForceMode.Impulse);
         }

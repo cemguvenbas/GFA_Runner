@@ -69,6 +69,14 @@ public class GameInstance : MonoBehaviour
 			LevelChanged?.Invoke(_level);
 		}
 	}
+	public void LoadCurrentLevel()
+    {
+		SceneManager.LoadScene(0);
+    }
+	public void RestartLevel()
+    {
+		SceneManager.LoadScene(0);
+	}
 
 	public void Win()
 	{
