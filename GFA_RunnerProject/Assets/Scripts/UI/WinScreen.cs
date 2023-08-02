@@ -13,10 +13,10 @@ public class WinScreen : MonoBehaviour
     }
     private void OnDisable()
     {
-        
+        _nextLevelButton.onClick.RemoveListener(OnNextLevelButtonPressed);
     }
     private void OnNextLevelButtonPressed()
     {
-
+        GameInstance.Instance.LoadCurrentLevel();
     }
 }

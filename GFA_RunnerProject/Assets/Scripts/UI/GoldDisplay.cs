@@ -9,7 +9,8 @@ public class GoldDisplay : MonoBehaviour
 
 	private void OnEnable()
 	{
-		GameInstance.Instance.GoldChanged += OnGoldChanged;
+		GameInstance.Instance.GoldChanged += OnGoldChanged; // GoldChanged Eventine, OnGoldChanged Methodunu bagliyoruz.
+															// Yani event ne zaman invokelanýrsa, OnGoldChanged methodu calýsacak
 		UpdateUI();
 	}
 

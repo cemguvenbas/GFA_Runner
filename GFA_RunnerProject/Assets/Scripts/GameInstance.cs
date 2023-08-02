@@ -69,6 +69,7 @@ public class GameInstance : MonoBehaviour
 			LevelChanged?.Invoke(_level);
 		}
 	}
+	
 	public void LoadCurrentLevel()
     {
 		SceneManager.LoadScene(0);
@@ -89,7 +90,6 @@ public class GameInstance : MonoBehaviour
 
 	public void Lose()
 	{
-		// TODO Show lose screen
 		Debug.Log("Lost!");
 		
 		EndGame();
