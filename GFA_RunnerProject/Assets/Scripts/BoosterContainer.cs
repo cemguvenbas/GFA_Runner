@@ -8,8 +8,17 @@ public class BoosterContainer : MonoBehaviour
     private List<BoosterInstance> _activeBoosters = new List<BoosterInstance>(); 
     public void AddBooster(Booster booster)
     {
+        foreach (var instance in _activeBoosters)
+        {
+            if (instance.Booster == booster)
+            {
+                instance.ResetDuration();
+                return;
+            }
+        }
         var boosterInstance = new BoosterInstance(booster);
         _activeBoosters.Add(boosterInstance);
+        booster.OnAdded(this);
     }
     public void RemoveBooster(Booster booster)
     {
@@ -23,10 +32,15 @@ public class BoosterContainer : MonoBehaviour
     }
     private void Update()
     {
-        for (int i = 0; i < _activeBoosters.Count; i++)
+        for (int i = _activeBoosters.Count - 1; i >= 0; i--)
         {
             var instance = _activeBoosters[i];
             instance.RemainingDuration -= Time.deltaTime;
+            if (instance.RemainingDuration <= 0)
+            {
+                instance.Booster.OnRemoved(this);
+                _activeBoosters.RemoveAt(i);
+            }
         }
     }
     public class BoosterInstance
@@ -37,7 +51,14 @@ public class BoosterContainer : MonoBehaviour
         public BoosterInstance(Booster booster)
         {
             Booster = booster;
+            ResetDuration();
+        }
+
+        public void ResetDuration()
+        {
             RemainingDuration = Booster.Duration;
+
         }
     }
+
 }

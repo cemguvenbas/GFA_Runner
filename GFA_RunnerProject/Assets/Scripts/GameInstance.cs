@@ -58,7 +58,8 @@ public class GameInstance : MonoBehaviour
 			GoldChanged?.Invoke(_gold);
 		}
 	}
-	// public int Gold { get; set; }
+	public float GoldMultiplier { get; set; } = 1;
+
 	private int _level;
 	public int Level
 	{

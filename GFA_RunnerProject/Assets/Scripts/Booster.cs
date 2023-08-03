@@ -8,5 +8,8 @@ public abstract class Booster : ScriptableObject
     [SerializeField] private float _duration;
     public float Duration => _duration;
 
+    public abstract void OnAdded(BoosterContainer container);
+    public abstract void OnRemoved(BoosterContainer container);
+
 
 }
