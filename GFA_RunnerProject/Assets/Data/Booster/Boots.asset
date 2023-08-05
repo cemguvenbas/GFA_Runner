@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50910035bb97b2a4c991057d491d0563, type: 3}
   m_Name: Boots
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
+  _icon: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   _duration: 10
   _multiplier: 2

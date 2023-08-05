@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,7 +6,9 @@ using UnityEngine;
 public class BoosterContainer : MonoBehaviour
 {
     // To Control Booster's Flow
-    private List<BoosterInstance> _activeBoosters = new List<BoosterInstance>(); 
+    private List<BoosterInstance> _activeBoosters = new List<BoosterInstance>();
+    public event Action<BoosterInstance> BoosterAdded;
+    public event Action<Booster> BoosterRemoved;
     public void AddBooster(Booster booster)
     {
         foreach (var instance in _activeBoosters)
@@ -19,6 +22,7 @@ public class BoosterContainer : MonoBehaviour
         var boosterInstance = new BoosterInstance(booster);
         _activeBoosters.Add(boosterInstance);
         booster.OnAdded(this);
+        BoosterAdded?.Invoke(boosterInstance);
     }
     public void RemoveBooster(Booster booster)
     {
@@ -40,6 +44,7 @@ public class BoosterContainer : MonoBehaviour
             {
                 instance.Booster.OnRemoved(this);
                 _activeBoosters.RemoveAt(i);
+                BoosterRemoved?.Invoke(instance.Booster);
             }
         }
     }

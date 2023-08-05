@@ -5,6 +5,9 @@ using UnityEngine;
 public abstract class Booster : ScriptableObject
 {
     [SerializeField] public Sprite _icon;
+    public Sprite Icon => _icon;
+
+
     [SerializeField] private float _duration;
     public float Duration => _duration;
 
