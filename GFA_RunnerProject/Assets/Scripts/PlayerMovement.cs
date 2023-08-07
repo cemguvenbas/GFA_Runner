@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 		}
 		_rigidbody.velocity = _velocity;
 
-		Debug.DrawRay(_rigidbody.position, Vector3.down * 1.05f);
-		_isGrounded = Physics.Raycast(_rigidbody.position, Vector3.down, 1.05f);
+		Debug.DrawRay(_rigidbody.position + Vector3.up, Vector3.down * 1.05f);
+		_isGrounded = Physics.Raycast(_rigidbody.position + Vector3.up, Vector3.down, 0.55f);
 	}
 }
